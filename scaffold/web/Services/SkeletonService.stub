@@ -1,0 +1,82 @@
+<?php
+
+namespace Modules\$MODULE$\Services;
+
+use Modules\Core\Abstratcs\Service\BaseService;
+use Modules\$MODULE$\Repositories\Contracts\$SKELETON$RepositoryInterface;
+use Modules\$MODULE$\Services\Contracts\$SKELETON$ServiceInterface;
+
+class $SKELETON$Service extends BaseService implements $SKELETON$ServiceInterface
+{
+    public $validator;
+
+    public function __construct(
+        $SKELETON$RepositoryInterface $repository
+    )
+    {
+        $this->repository = $repository;
+    }
+
+    public function create($data)
+    {
+        try {
+            return parent::create($data);
+        } catch (\Exception $exception) {
+            report($exception);
+            throw $exception;
+        }
+    }
+
+    public function merge($model, $data)
+    {
+        try {
+            return parent::merge($model, $data);
+        } catch (\Exception $exception) {
+            report($exception);
+            throw $exception;
+        }
+    }
+
+    public function delete($model)
+    {
+        try {
+            $model->delete();
+            return true;
+        } catch (\Exception $exception) {
+            report($exception);
+            throw $exception;
+        }
+    }
+
+    public function deleteBatch($models)
+    {
+        try{
+            $response = DB::transaction(function () use ($models) {
+                foreach ($models as $model){
+                    $this->delete($model);
+                }
+                return true;
+            });
+            return $response;
+        } catch (\Exception $exception) {
+            report($exception);
+            throw $exception;
+        }
+    }
+
+    public function changeStatusBatch($models)
+    {
+        try{
+            $response = DB::transaction(function () use ($models) {
+                foreach ($models as $model){
+                    $this->merge($model, ["active" => !$model->active]);
+                }
+                return true;
+            });
+            return $response;
+        } catch (\Exception $exception) {
+            report($exception);
+            throw $exception;
+        }
+    }
+}

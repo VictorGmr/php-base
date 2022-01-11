@@ -1,0 +1,26 @@
+<?php
+
+namespace Modules\$MODULE$\Rules;
+
+use Modules\$MODULE$\Entities\$SKELETON$;
+use Modules\Core\Abstratcs\Rules\BaseRules;
+
+class $SKELETON$Rule extends BaseRules
+{
+    protected $table;
+    protected $rules;
+
+    public function __construct($SKELETON$ $$SKELETONMODELNAME$)
+    {
+        $this->table = $$SKELETONMODELNAME$->getTable();
+        $this->rules = collect();
+
+    }
+
+    public function getRules($request = null)
+    {
+        return $this->rules
+            ->merge($this->name())
+            ->toArray();
+    }
+}

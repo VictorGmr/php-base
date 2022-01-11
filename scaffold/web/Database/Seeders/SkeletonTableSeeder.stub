@@ -1,0 +1,20 @@
+<?php
+
+namespace Modules\$MODULE$\Database\Seeders;
+
+use Illuminate\Database\Seeder;
+use Illuminate\Database\Eloquent\Model;
+use Modules\$MODULE$\Entities\$SKELETON$;
+
+class $SKELETON$TableSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        $SKELETON$::factory(50)->create();
+    }
+}

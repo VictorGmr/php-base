@@ -1,0 +1,15 @@
+<?php
+
+namespace Modules\$MODULE$\Repositories;
+
+use Modules\Core\Abstratcs\Repository\BaseRepository;
+use Modules\$MODULE$\Entities\$SKELETON$;
+use Modules\$MODULE$\Repositories\Contracts\$SKELETON$RepositoryInterface;
+
+class $SKELETON$Repository extends BaseRepository implements $SKELETON$RepositoryInterface
+{
+    public function __construct($SKELETON$ $model)
+    {
+        $this->model = $model;
+    }
+}

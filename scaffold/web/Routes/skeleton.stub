@@ -1,0 +1,18 @@
+<?php
+
+use Modules\$MODULE$\Http\Controllers\$SKELETON$Controller;
+
+Route::group(['middleware' => config('fortify.middleware', ['web'])], function () {
+
+    Route::get('/list', [$SKELETON$Controller::class,'list'])
+        ->middleware(['auth:' . config('fortify.guard')])
+        ->name('$FOLDERVIEW$-list');
+
+    Route::get('/create', [$SKELETON$Controller::class,'create'])
+        ->middleware(['auth:' . config('fortify.guard')])
+        ->name('$FOLDERVIEW$-create');
+
+    Route::get('/{uuid}/edit', [$SKELETON$Controller::class,'edit'])
+        ->middleware(['auth:' . config('fortify.guard')])
+        ->name('$FOLDERVIEW$-edit');
+});

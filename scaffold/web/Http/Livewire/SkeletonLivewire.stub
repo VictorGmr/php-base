@@ -1,0 +1,49 @@
+<?php
+
+namespace Modules\$MODULE$\Http\Livewire;
+
+use Modules\Core\Abstratcs\Livewire\BaseLivewire;
+use Modules\$MODULE$\Rules\$SKELETON$Rule;
+use Modules\$MODULE$\Services\Contracts\$SKELETON$ServiceInterface;
+
+class $SKELETON$Livewire extends BaseLivewire
+{
+    protected $service;
+    protected $modelRules;
+    protected $redirectToList = true;
+
+    public $modelId;
+    public $active = true;
+    public $name;
+
+    public function boot(
+        $SKELETON$ServiceInterface $$SKELETONMODELNAME$Service,
+        $SKELETON$Rule $$SKELETONMODELNAME$Rule
+    )
+    {
+        $this->service = $$SKELETONMODELNAME$Service;
+        $this->modelRules = $$SKELETONMODELNAME$Rule;
+    }
+
+    public function mount($$SKELETONMODELNAME$ = null)
+    {
+        if($$SKELETONMODELNAME$){
+            $this->modelId = $$SKELETONMODELNAME$->id;
+            $this->fill($$SKELETONMODELNAME$);
+        }
+    }
+
+    public function render()
+    {
+        return view('$MODULELOWER$::$FOLDERVIEW$.livewire.$FOLDERVIEW$');
+    }
+
+    /**
+     * Actions
+     */
+
+    protected function prepareForValidation($attributes)
+    {
+        return $attributes;
+    }
+}

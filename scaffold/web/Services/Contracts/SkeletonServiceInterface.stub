@@ -1,0 +1,12 @@
+<?php
+
+namespace Modules\$MODULE$\Services\Contracts;
+
+use Modules\Core\Abstratcs\Interfaces\CrudInterface;
+
+interface $SKELETON$ServiceInterface extends CrudInterface
+{
+    public function create($data);
+    public function merge($model,$data);
+    public function delete($model);
+}

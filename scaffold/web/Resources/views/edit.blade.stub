@@ -1,0 +1,21 @@
+@extends('midone.layout.side-menu')
+
+@section('subhead')
+    <title>{{__(config('systemconfig.app_name').' - Editar '.ModuleConfig::getLabel())}}</title>
+@endsection
+
+@section('breadcrumbs')
+    {{ Breadcrumbs::render('$FOLDERVIEW$-edit', $$SKELETONMODELNAME$) }}
+@endsection
+
+@section('subcontent')
+    <x-contents.title>
+        {{__('Editar '.ModuleConfig::getLabel())}}
+    </x-contents.title>
+
+    <x-contents.grid>
+        <x-contents.painel cols="6">
+            <livewire:$MODULELOWER$::$SKELETONMODELNAME$ :$SKELETONMODELNAME$="$$SKELETONMODELNAME$"/>
+        </x-contents.painel>
+    </x-contents.grid>
+@endsection

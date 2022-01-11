@@ -1,0 +1,25 @@
+<?php
+
+namespace Modules\$MODULE$\Entities;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Modules\Core\Abstratcs\Model\BaseModel;
+use Modules\$MODULE$\Database\factories\$SKELETON$Factory;
+
+class $SKELETON$ extends BaseModel
+{
+    use HasFactory;
+
+    protected $table = '$MODULEDOMAINLOWER$';
+    protected $generateUuid = false;
+
+    public $fillable = [
+        'name',
+        'active',
+    ];
+
+    public static function newFactory()
+    {
+        return $SKELETON$Factory::new();
+    }
+}

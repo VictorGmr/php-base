@@ -54,18 +54,6 @@ class User extends Authenticatable
         return UserFactory::new();
     }
 
-    public function companies()
-    {
-        return $this->belongsToMany(Company::class,config("company.table_prefix").'company_has_user','user_id','company_id');
-    }
-
-    public function applications()
-    {
-        return $this->belongsToMany(Application::class,'app_applications_has_users','user_id','application_id')
-            //->where('company_id', session()->get('default-company')->id)
-            ->withPivot('id','company_id');
-    }
-
     protected static function boot()
     {
         parent::boot();
