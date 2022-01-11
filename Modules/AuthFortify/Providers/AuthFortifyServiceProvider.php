@@ -76,7 +76,7 @@ class AuthFortifyServiceProvider extends FortifyServiceProvider
                 Features::enabled(Features::twoFactorAuthentication()) ? RedirectIfTwoFactorAuthenticatable::class : null,
                 AttemptToAuthenticate::class,
                 PrepareAuthenticatedSession::class,
-                CreateCompanySession::class,
+                //CreateCompanySession::class,
             ]);
         });
 

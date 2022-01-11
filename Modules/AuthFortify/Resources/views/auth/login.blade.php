@@ -88,7 +88,7 @@
                     password: password,
                     remember_me: rememberMe
                 }).then(res => {
-                    location.href = '/dashboard'
+                    window.location.href = '/dashboard'
                 }).catch(err => {
                     cash('#btn-login').html('Entrar')
                     if (err.response.data.message != 'Wrong email or password.') {
