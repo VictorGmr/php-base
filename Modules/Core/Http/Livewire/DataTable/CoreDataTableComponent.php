@@ -266,7 +266,7 @@ abstract class CoreDataTableComponent extends DataTableComponent
                         }
 
                         // We can use a simple where clause
-                        $subQuery->orWhere($whereColumn, 'ilike', '%' . $search . '%');
+                        $subQuery->orWhere($whereColumn, 'like', '%' . $search . '%');
                     } else {
                         // Parse the column
                         $relationName = ColumnUtilities::parseRelation($column->column());
@@ -274,7 +274,7 @@ abstract class CoreDataTableComponent extends DataTableComponent
 
                         // We use whereHas which can work with unselected relations
                         $subQuery->orWhereHas($relationName, function (Builder $hasQuery) use ($fieldName, $search) {
-                            $hasQuery->where($fieldName, 'ilike', '%' . $search . '%');
+                            $hasQuery->where($fieldName, 'like', '%' . $search . '%');
                         });
                     }
                 }
