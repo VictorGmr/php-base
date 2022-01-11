@@ -96,7 +96,7 @@ class AuthFortifyServiceProvider extends FortifyServiceProvider
          * Views
          */
         Fortify::loginView(function () {
-            return view('welcome');
+            return view('authfortify::auth.login');
         });
 
         Fortify::registerView(function () {

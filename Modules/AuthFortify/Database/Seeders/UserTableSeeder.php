@@ -18,18 +18,11 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        $admin = Company::whereAlias('admin')->get()->first();
         $user = User::create([
             'name' => 'admin',
             'email' => 'admin@admin.com',
             'password' => Hash::make('12345678'),
         ]);
-        $admin->users()->saveMany([$user]);
-
-        $application = Application::where('alias','admin')->get()->first();
-        $user->applications()->syncWithPivotValues([$application->id], ['company_id' => $admin->id]);
-
         $users = User::factory(5)->create();
-        $admin->users()->saveMany($users);
     }
 }

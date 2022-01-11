@@ -1,10 +1,12 @@
 window._ = require('lodash');
 
 import cash from "cash-dom";
+import axios from "axios";
 import Alpine from 'alpinejs'
 import IMask from 'imask';
 import TomSelect from "tom-select";
 import Toastify from "toastify-js";
+import helper from "./helper";
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -17,6 +19,8 @@ try {
     window.Popper = require('popper.js').default;
     window.$ = window.jQuery = require('jquery');
     window.cash = cash;
+    window.axios = axios;
+    window.helper = helper;
     window.Alpine = Alpine
     window.IMask = IMask;
     window.TomSelect = TomSelect;
