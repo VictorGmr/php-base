@@ -1,5 +1,6 @@
 window._ = require('lodash');
 
+import cash from "cash-dom";
 import Alpine from 'alpinejs'
 import IMask from 'imask';
 import TomSelect from "tom-select";
@@ -12,9 +13,10 @@ import Toastify from "toastify-js";
  */
 
 try {
+    // Set plugins globally
     window.Popper = require('popper.js').default;
     window.$ = window.jQuery = require('jquery');
-
+    window.cash = cash;
     window.Alpine = Alpine
     window.IMask = IMask;
     window.TomSelect = TomSelect;
