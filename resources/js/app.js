@@ -1,4 +1,3 @@
-require('./bootstrap');
 require('admin-lte');
 
 /*
@@ -19,5 +18,7 @@ import "./livewire-reload";
  |
  */
 
+import "./bootstrap";
+import "./admin-lte";
 import "./datepicker";
 import "./tom-select";
