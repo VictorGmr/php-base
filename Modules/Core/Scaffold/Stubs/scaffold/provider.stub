@@ -28,11 +28,10 @@ class $CLASS$ extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->moduleName, '$MIGRATIONS_PATH$'));
-        $this->registerLivewireComponents();
 
-        if (class_exists('Breadcrumbs')) {
-            require module_path($this->moduleName, 'Routes').'/breadcrumbs.php';
-        }
+        //if (class_exists('Breadcrumbs')) {
+          //  require module_path($this->moduleName, 'Routes').'/breadcrumbs.php';
+        //}
     }
 
     /**
@@ -113,14 +112,5 @@ class $CLASS$ extends ServiceProvider
             }
         }
         return $paths;
-    }
-
-    public function registerLivewireComponents()
-    {
-        if(Arr::accessible(config($this->moduleNameLower.'.livewire'))){
-            foreach (config($this->moduleNameLower.'.livewire') as $livewire) {
-                Livewire::component($this->moduleNameLower.'::'.$livewire['alias'], $livewire['class']);
-            }
-        }
     }
 }

@@ -9,6 +9,12 @@
         "prod": "npm run production",
         "production": "mix --production"
     },
+    "dependencies": {
+        "toastify-js": "^1.9.0",
+        "tom-select": "^1.7.5",
+        "imask": "^6.2.2",
+        "alpinejs": "^3.5.1"
+    },
     "devDependencies": {
         "admin-lte": "^3.0",
         "axios": "^0.21",
