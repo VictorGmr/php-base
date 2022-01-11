@@ -1,0 +1,23 @@
+{
+    "name": "nwidart/solicitacaocadastro",
+    "description": "",
+    "authors": [
+        {
+            "name": "CRP Tecnologia",
+            "email": "crp@tecnologia.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\SolicitacaoCadastro\\": ""
+        }
+    }
+}

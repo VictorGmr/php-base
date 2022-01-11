@@ -1,0 +1,37 @@
+@extends('adminlte::page')
+
+@section('title')
+
+@section('content_header')
+    <h3 class="m-0">
+        <i class="fa fa-clipboard" aria-hidden="true"></i> Visualizar {{DomainsEnum::getDomainLabel($domain)}}
+    </h3>
+@stop
+
+@section('content')
+
+    <div class="row">
+        <!-- PRINCIPAL -->
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="card box-shadow">
+                <div class="card-header border-0 no-bg-color">
+                    <h5 class="text-primary">Dados Principais</h5>
+                </div>
+
+                <div class="ribbon-wrapper ribbon-lg">
+                    <div class="ribbon {{$status->flAtivo == 'S' ? 'bg-primary' : 'bg-danger'}} text-md">
+                        {{ $status->flAtivo == 'S' ? 'ATIVO' : 'INATIVO' }}
+                    </div>
+                </div>
+
+                <div class="card-body">
+
+                </div>
+            </div>
+
+            <button type="button" onclick="location.href='{{route($domain.'.index')}}'" class="btn btn-secondary mr-3 mb-5 float-right">
+                <i class="{{ config('goinfra.buttons.back.icon') }}" aria-hidden="true"></i> {{ config('goinfra.buttons.back.text') }}
+            </button>
+    </div>
+
+@stop

@@ -1,0 +1,13 @@
+{
+    "name": "SystemConfig",
+    "alias": "systemconfig",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\SystemConfig\\Providers\\SystemConfigServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

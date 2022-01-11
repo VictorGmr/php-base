@@ -1,0 +1,46 @@
+<?php
+
+namespace Modules\$MODULE$\Services;
+
+use Modules\Core\Abstratcs\Service\BaseService;
+use Modules\$MODULE$\Repositories\Contracts\$SKELETON$RepositoryInterface;
+use Modules\$MODULE$\Services\Contracts\$SKELETON$ServiceInterface;
+use Modules\$MODULE$\Traits\ServiceTrait;
+
+class $SKELETON$Service extends BaseService implements $SKELETON$ServiceInterface
+{
+    use ServiceTrait;
+
+    public function __construct($SKELETON$RepositoryInterface $repository)
+    {
+        $this->repository = $repository;
+    }
+
+    public function create($data)
+    {
+        try {
+            return parent::create($data);
+        } catch (\Exception $exception) {
+            throw $exception;
+        }
+    }
+
+    public function merge($model, $data)
+    {
+        try {
+            return parent::merge($model, $data);
+        } catch (\Exception $exception) {
+            throw $exception;
+        }
+    }
+
+    public function delete($model)
+    {
+        try {
+            $model->delete();
+            return true;
+        } catch (\Exception $exception) {
+            throw $exception;
+        }
+    }
+}

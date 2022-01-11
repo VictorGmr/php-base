@@ -1,0 +1,122 @@
+<?php
+
+namespace Modules\$MODULE$\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Modules\Core\Abstratcs\Controller\BaseController;
+use Modules\Core\DefaultMessages\GlobalMessages;
+use Modules\$MODULE$\Entities\$SKELETON$;
+use Modules\$MODULE$\Enum\DomainsEnum;
+use Modules\$MODULE$\Enum\PermissionsEnum;
+use Modules\$MODULE$\Http\Requests\Store$SKELETON$Request;
+use Modules\$MODULE$\Http\Requests\Update$SKELETON$Request;
+use Modules\$MODULE$\Services\Contracts\$SKELETON$ServiceInterface;
+
+class $SKELETON$Controller extends BaseController
+{
+    protected $service;
+
+    public function __construct($SKELETON$ServiceInterface $service)
+    {
+        $this->service = $service;
+    }
+
+    public static function getDomain()
+    {
+        return DomainsEnum::$SKELETON$;
+    }
+
+    public function index(Request $request)
+    {
+        $$SKELETONMODELNAME$List = null;
+        try{
+            $$SKELETONMODELNAME$List = $this->service->all();
+        }catch (\Exception $exception){
+            $this->flashError(GlobalMessages::SEARCH_ERROR);
+        }
+
+        return view('$MODULELOWER$::$FOLDERVIEW$.list')
+            ->with('$SKELETONMODELNAME$List', $$SKELETONMODELNAME$List)
+            ->with('domain', self::getDomain());
+    }
+
+    public function create(Request $request)
+    {
+        return view('$MODULELOWER$::$FOLDERVIEW$.create')
+            ->with('domain', self::getDomain());
+    }
+
+    public function store(Store$SKELETON$Request $request)
+    {
+        try{
+            $this->service->create($request->validated());
+            $this->flashSuccess(GlobalMessages::CREATE_SUCCESS);
+        }catch (\Exception $exception){
+            report($exception);
+            $this->flashError(GlobalMessages::CREATE_ERROR);
+        }
+        return redirect()->route(self::getDomain().'.index');
+    }
+
+    public function edit(Request $request)
+    {
+        try{
+            $$SKELETONMODELNAME$ = $this->service->find($request->cd$SKELETON$);
+        }catch (\Exception $exception){
+            $this->flashError(GlobalMessages::ELEMENT_NOT_FOUND,"", " selecionado!");
+            return redirect()->route(self::getDomain().'.index');
+        }
+        return view('$MODULELOWER$::$FOLDERVIEW$.edit')
+            ->with('$SKELETONMODELNAME$', $$SKELETONMODELNAME$)
+            ->with('domain', self::getDomain());
+    }
+
+    public function update(Update$SKELETON$Request $request, $SKELETON$ $cd$SKELETON$)
+    {
+        try{
+            $this->service->merge($cd$SKELETON$, $request->validated());
+            $this->flashSuccess(GlobalMessages::EDIT_SUCCESS);
+        }catch (\Exception $exception){
+            report($exception);
+            $this->flashError(GlobalMessages::EDIT_ERROR);
+        }
+        return redirect()->route(self::getDomain().'.index');
+    }
+
+    public function destroy(Request $request)
+    {
+        try{
+            $$SKELETONMODELNAME$ = $this->service->find($request->element);
+            $this->service->delete($$SKELETONMODELNAME$);
+            $this->flashSuccess(GlobalMessages::DELETE_SUCCESS);
+        }catch (\Exception $exception){
+            $this->flashError(GlobalMessages::DELETE_ERROR);
+        }
+        return redirect()->route(self::getDomain().'.index');
+    }
+
+    public function alterStatus(Request $request)
+    {
+        try{
+            $$SKELETONMODELNAME$ = $this->service->find($request->element);
+            $this->service->alterStatus($$SKELETONMODELNAME$);
+            $this->flashSuccess(GlobalMessages::EDIT_SUCCESS);
+        }catch (\Exception $exception){
+            $this->flashSuccess(GlobalMessages::EDIT_ERROR);
+        }
+        return redirect()->route(self::getDomain().'.index');
+    }
+
+    public function show(Request $request)
+    {
+        try{
+            $$SKELETONMODELNAME$ = $this->service->find($request->cd$SKELETON$);
+        }catch (\Exception $exception){
+            $this->flashError(GlobalMessages::SEARCH_ERROR);
+            return redirect()->route(self::getDomain().'.index');
+        }
+        return view('$MODULELOWER$::$FOLDERVIEW$.show')
+            ->with('$SKELETONMODELNAME$', $$SKELETONMODELNAME$)
+            ->with('domain', self::getDomain());
+    }
+}

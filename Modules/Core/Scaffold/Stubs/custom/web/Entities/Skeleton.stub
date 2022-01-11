@@ -1,0 +1,10 @@
+<?php
+
+namespace Modules\$MODULE$\Entities;
+
+use Modules\Core\Abstratcs\Model\BaseModel;
+
+class $SKELETON$ extends BaseModel
+{
+    public    $fillable = [];
+}

@@ -1,0 +1,6 @@
+{
+    "AuthFortify": true,
+    "Core": true,
+    "SystemConfig": true,
+    "SolicitacaoCadastro": true
+}

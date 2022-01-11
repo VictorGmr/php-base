@@ -1,0 +1,25 @@
+<?php
+
+namespace Modules\$MODULE$\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class Store$SKELETON$Request extends FormRequest
+{
+    public function authorize()
+    {
+        return true;
+    }
+
+    public function rules()
+    {
+        $rules = [];
+        return $rules;
+    }
+
+    public function attributes()
+    {
+        $result = [];
+        return $result;
+    }
+}

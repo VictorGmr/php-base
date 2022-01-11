@@ -1,0 +1,9 @@
+<?php
+
+return [
+    'name' => '$STUDLY_NAME$',
+    'alias' => '$LOWER_NAME$',
+    'table_prefix' => '',
+    'domains' => [],
+    'livewire' => [],
+];

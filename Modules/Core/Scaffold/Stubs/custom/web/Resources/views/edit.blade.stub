@@ -1,0 +1,45 @@
+@extends('adminlte::page')
+
+@section('title')
+
+@section('content_header')
+    <h3 class="m-0">
+        <i class="fa fa-clipboard" aria-hidden="true"></i> Editar {{DomainsEnum::getDomainLabel($domain)}}
+    </h3>
+@stop
+
+@section('content')
+
+    <td>
+        <label class="text-danger">
+            <small> Campos marcados com (*) são obrigatórios.</small>
+        </label>
+    </td>
+
+    {!! Form::model($$SKELETONMODELNAME$, ['route' => [$domain.'.update','cd$SKELETON$' => $$SKELETONMODELNAME$->cd$SKELETON$ ],'method'=>'PUT']) !!}
+    <div class="row">
+        <!-- PRINCIPAL -->
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="card box-shadow">
+                <div class="card-header border-0 no-bg-color">
+                    <h5 class="text-primary">Dados Principais</h5>
+                </div>
+
+                <div class="card-body">
+                     @include('$MODULELOWER$::$FOLDERVIEW$._form')
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @include('componentes.loading')
+    @include('componentes.crud-buttons', ['object' => $$SKELETONMODELNAME$])
+
+    {!! Form::close() !!}
+
+    @include('componentes.confirm-modal-delete', [
+        'deleteRoute' => $domain.'.destroy',
+        'element' => $$SKELETONMODELNAME$->cd$SKELETON$
+    ])
+
+@stop

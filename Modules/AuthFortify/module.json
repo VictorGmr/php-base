@@ -1,0 +1,13 @@
+{
+    "name": "AuthFortify",
+    "alias": "authfortify",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\AuthFortify\\Providers\\AuthFortifyServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

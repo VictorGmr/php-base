@@ -1,0 +1,86 @@
+@extends('componentes.base-list')
+
+@section('form_filter')
+
+        <!-- FORMULARIO DE FILTRO AQUI, SE NÃO TIVER REMOVER A TAG -->
+@stop
+
+@section('table')
+
+    <table id="table" class="table table-striped">
+        <thead class="thead-light">
+            <tr class="text-secondary">
+
+                <!-- HEADER DAS COLUNAS ENTIDADE AQUI -->
+
+                <th class="text-center" scope="col">Ativo</th>
+                <th class="text-center" scope="col">Opções</th>
+
+                {{-- Colunas apenas para exportação --}}
+            </tr>
+        </thead>
+
+        <tbody>
+
+        @foreach ($$SKELETONMODELNAME$List as $$SKELETONMODELNAME$)
+            <tr>
+
+                <!-- COLUNAS ENTIDADE AQUI -->
+
+                <td class="text-center">
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" disabled {{ $$SKELETONMODELNAME$['flAtivo'] == 'S' ? 'checked' : '' }}>
+                        <label class="custom-control-label"></label>
+                    </div>
+                </td>
+
+                <td class="form-inline justify-content-center">
+                    <a class="btn btn-outline-primary" title="Visualizar" href="{{route($domain.'.show', $$SKELETONMODELNAME$->cd$SKELETON$)}}">
+                        <i class="{{config('goinfra.buttons.show.icon')}}"></i>
+                    </a>
+                    {{-- VERIFICA SE TEM PERMISSÃO --}}
+                    @can(DomainsEnum::getGate($domain, \Modules\Empreendimento\Enum\PermissionsEnum::EDITAR))
+                        {{-- VERIFICA SE TEM PERMISSÃO --}}
+                        <a class="btn btn-outline-primary" title="Editar" href="{{route($domain.'.edit', $$SKELETONMODELNAME$->cd$SKELETON$)}}">
+                            <i class="{{config('goinfra.buttons.view.icon')}}"></i>
+                        </a>
+
+                        @if ($status->flAtivo == 'N')
+                            <div data-toggle="tooltip" title="Habilitar">
+                                <button type="button"
+                                        class="btn btn-outline-success"
+                                        data-cattext="Tem certeza em habilitar o $SKELETONMODELNAME$ <b>{{ $$SKELETONMODELNAME$->de$SKELETON$ }}</b>?"
+                                        data-catid="{{route($domain.'.alterStatus', $status->cd$SKELETON$)}}"
+                                        data-toggle="modal"
+                                        data-target="#modalEnable">
+                                    <i class="{{ config('goinfra.buttons.disable.icon') }}" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        @else
+                            <div data-toggle="tooltip" title="Desabilitar">
+                                <button type="button"
+                                        class="btn btn-outline-danger"
+                                        data-cattext="Tem certeza em desabilitar o $SKELETONMODELNAME$ <b>{{ $$SKELETONMODELNAME$->de$SKELETON$ }}</b>?"
+                                        data-catid="{{route($domain.'.alterStatus', $status->cd$SKELETON$)}}"
+                                        data-toggle="modal"
+                                        data-target="#modalEnable">
+                                    <i class="{{ config('goinfra.buttons.enable.icon') }}" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        @endif
+                    @else
+                        <i class="fa fa-lock" aria-hidden="true"></i>
+                    @endif
+                </td>
+
+                {{-- Colunas apenas para exportação --}}
+            </tr>
+        @endforeach
+        </tbody>
+
+    </table>
+@stop
+
+@push('js')
+    <script src="{{ mix('js/listar$SKELETON$.js') }}"></script>
+@endpush
