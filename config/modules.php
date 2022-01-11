@@ -108,6 +108,7 @@ return [
             'model' => ['path' => 'Entities', 'generate' => true],
             'routes' => ['path' => 'Routes', 'generate' => true],
             'controller' => ['path' => 'Http/Controllers', 'generate' => true],
+            'livewire' => ['path' => 'Http/Livewire', 'generate' => true],
             'filter' => ['path' => 'Http/Middleware', 'generate' => true],
             'request' => ['path' => 'Http/Requests', 'generate' => true],
             'provider' => ['path' => 'Providers', 'generate' => true],

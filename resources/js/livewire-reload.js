@@ -74,8 +74,9 @@ document.addEventListener("livewire:load", () => {
         });
 
         // Feather Icons
+        /*
         feather.replace({
             "stroke-width": 1.5,
-        });
+        });*/
     });
 });

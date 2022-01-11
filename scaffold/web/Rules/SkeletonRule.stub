@@ -20,6 +20,7 @@ class $SKELETON$Rule extends BaseRules
     public function getRules($request = null)
     {
         return $this->rules
+            ->merge($this->active())
             ->merge($this->name())
             ->toArray();
     }

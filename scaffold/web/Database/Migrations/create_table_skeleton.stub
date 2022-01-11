@@ -16,7 +16,7 @@ class CreateTable$SKELETON$ extends Migration
         Schema::create(config("$MODULELOWER$.table_prefix").'$MODULEDOMAINLOWER$', function (Blueprint $table) {
             $table->increments('id');
             $table->uuid('uuid');
-            $table->caseInsensitiveText('name');
+            $table->string('name');
             $table->boolean('active')->default(true);
             $table->timestamps();
         });

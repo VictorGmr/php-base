@@ -5,6 +5,9 @@ namespace Modules\$MODULE$\Http\Livewire;
 use Modules\Core\Abstratcs\Livewire\BaseLivewire;
 use Modules\$MODULE$\Rules\$SKELETON$Rule;
 use Modules\$MODULE$\Services\Contracts\$SKELETON$ServiceInterface;
+use Modules\$MODULE$\Enum\Domains$MODULE$Enum;
+use Modules\Core\Helpers\Application\ModuleConfig;
+use Route;
 
 class $SKELETON$Livewire extends BaseLivewire
 {
@@ -12,6 +15,7 @@ class $SKELETON$Livewire extends BaseLivewire
     protected $modelRules;
     protected $redirectToList = true;
 
+    public $$SKELETONMODELNAME$;
     public $modelId;
     public $active = true;
     public $name;
@@ -21,15 +25,29 @@ class $SKELETON$Livewire extends BaseLivewire
         $SKELETON$Rule $$SKELETONMODELNAME$Rule
     )
     {
+        $this->action = Route::getFacadeRoot()->current()->action['as'];
+        ModuleConfig::setModuleDomain(
+            config('$MODULELOWER$.alias'),
+            Domains$MODULE$Enum::$MODULEDOMAINUPPER$
+        );
+
         $this->service = $$SKELETONMODELNAME$Service;
         $this->modelRules = $$SKELETONMODELNAME$Rule;
     }
 
-    public function mount($$SKELETONMODELNAME$ = null)
+    public function mount($uuid = null)
     {
-        if($$SKELETONMODELNAME$){
-            $this->modelId = $$SKELETONMODELNAME$->id;
-            $this->fill($$SKELETONMODELNAME$);
+        try{
+            if($uuid){
+                $$SKELETONMODELNAME$ = $this->service->findByUuid($uuid);
+                $this->modelId = $$SKELETONMODELNAME$->id;
+                $this->fill($$SKELETONMODELNAME$);
+                $this->$SKELETONMODELNAME$ = $$SKELETONMODELNAME$;
+
+            }
+        }catch (\Exception $exception){
+            $this->flashFailed($this->getExceptionMessage($exception));
+            return redirect()->to(url()->previous());
         }
     }
 

@@ -233,6 +233,12 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        /**
+         * Custom
+         */
+        'ModuleConfig' => \Modules\Core\Helpers\Application\ModuleConfig::class,
+        'GlobalMessages' => \Modules\Core\DefaultMessages\GlobalMessages::class,
+        'ApplicationHelper' => \Modules\Core\Helpers\Application\ApplicationHelper::class,
     ],
 
 ];

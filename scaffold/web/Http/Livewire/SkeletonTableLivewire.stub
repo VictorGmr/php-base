@@ -8,7 +8,8 @@ use Modules\Core\Http\Livewire\Traits\ConfirmModalTrait;
 use Modules\Core\Http\Livewire\Traits\NotifyTrait;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use Rappasoft\LaravelLivewireTables\Views\Filter;
-
+use Modules\$MODULE$\Enum\Domains$MODULE$Enum;
+use Modules\Core\Helpers\Application\ModuleConfig;
 use Modules\$MODULE$\Entities\$SKELETON$;
 use Modules\$MODULE$\Services\Contracts\$SKELETON$ServiceInterface;
 
@@ -36,6 +37,11 @@ class $SKELETON$TableLivewire extends CoreDataTableComponent
 
     public function boot($SKELETON$ServiceInterface $service)
     {
+        ModuleConfig::setModuleDomain(
+            config('$MODULELOWER$.alias'),
+            Domains$MODULE$Enum::$MODULEDOMAINUPPER$
+        );
+
         $this->service = $service;
         $this->queryString['columnSearch'] = ['except' => null];
     }

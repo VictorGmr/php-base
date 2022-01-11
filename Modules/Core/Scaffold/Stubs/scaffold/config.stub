@@ -1,8 +1,10 @@
 <?php
 
+use Modules\Core\DefaultMessages;
+
 return [
     'name' => '$STUDLY_NAME$',
-    'alias' => '$LOWER_NAME$',
+    'alias' => '$STUDLY_NAME$',
     'table_prefix' => '',
     'domains' => [],
     'livewire' => [],

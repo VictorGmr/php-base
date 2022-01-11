@@ -1,18 +1,18 @@
 <?php
 
-use Modules\$MODULE$\Http\Controllers\$SKELETON$Controller;
+use Modules\$MODULE$\Http\Livewire;
 
 Route::group(['middleware' => config('fortify.middleware', ['web'])], function () {
 
-    Route::get('/list', [$SKELETON$Controller::class,'list'])
+    Route::get('/list', Livewire\$SKELETON$TableLivewire::class)
         ->middleware(['auth:' . config('fortify.guard')])
         ->name('$FOLDERVIEW$-list');
 
-    Route::get('/create', [$SKELETON$Controller::class,'create'])
+    Route::get('/create', Livewire\$SKELETON$Livewire::class)
         ->middleware(['auth:' . config('fortify.guard')])
         ->name('$FOLDERVIEW$-create');
 
-    Route::get('/{uuid}/edit', [$SKELETON$Controller::class,'edit'])
+    Route::get('/{uuid}/edit', Livewire\$SKELETON$Livewire::class)
         ->middleware(['auth:' . config('fortify.guard')])
         ->name('$FOLDERVIEW$-edit');
 });

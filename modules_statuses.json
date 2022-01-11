@@ -2,5 +2,6 @@
     "AuthFortify": true,
     "Core": true,
     "SystemConfig": true,
-    "Teste": true
+    "Teste": true,
+    "Example": true
 }

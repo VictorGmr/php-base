@@ -30,7 +30,7 @@ class $CLASS$ extends ServiceProvider
         $this->loadMigrationsFrom(module_path($this->moduleName, '$MIGRATIONS_PATH$'));
 
         //if (class_exists('Breadcrumbs')) {
-          //  require module_path($this->moduleName, 'Routes').'/breadcrumbs.php';
+           // require module_path($this->moduleName, 'Breadcrumbs').'/breadcrumbs.php';
         //}
     }
 
